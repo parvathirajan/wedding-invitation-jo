@@ -671,7 +671,7 @@ a {
     }
 
     .time-block {
-        width: 60px;
+        width: 100px;
         padding: 15px;
         font-size: 1.5rem;
     }
@@ -687,7 +687,7 @@ a {
 
 @media (max-width: 480px) {
     .time-block {
-        width: 50px;
+        width: 80px;
         padding: 12px;
     }
 
