@@ -9,33 +9,8 @@ $(document).on('click', function () {
     document.getElementById("my_audio").play();
 });
 
-// Function to get the countdown target date in EST/EDT
-function getEasternTime(dateString) {
-    // Create the target date in UTC
-    let targetDate = new Date(dateString);
-
-    // Use the Intl.DateTimeFormat API to determine if the target date is in daylight saving time
-    const options = { timeZone: "America/New_York", hourCycle: "h23" };
-    const formatter = new Intl.DateTimeFormat("en-US", options);
-
-    // Convert the date to the local time of the given time zone
-    const parts = formatter.formatToParts(targetDate);
-
-    // Reconstruct the time in the local timezone
-    const localDate = new Date(
-        parts.find((p) => p.type === "year").value,
-        parts.find((p) => p.type === "month").value - 1, // Zero-based
-        parts.find((p) => p.type === "day").value,
-        parts.find((p) => p.type === "hour").value,
-        parts.find((p) => p.type === "minute").value,
-        parts.find((p) => p.type === "second").value
-    );
-
-    return localDate.getTime();
-}
-
-// Set the countdown target date in EST/EDT
-var countDownDate = getEasternTime("November 28, 2024 18:30:00");
+// Set the countdown target date
+var countDownDate = new Date("November 28, 2024 18:30:00").getTime();
 
 // Update the countdown every second
 var countdownInterval = setInterval(function () {
@@ -74,6 +49,8 @@ var countdownInterval = setInterval(function () {
             <div class="time-label">Seconds</div>
         </div>
     </div>`;
+
+
     
     // Handle countdown completion
     if (distance < 0) {
@@ -113,6 +90,7 @@ var styles2 = [
     'font-weight: bold',
     'font-size: 32px'
 ].join(';');
+
 
 // Function to change the text every few seconds
 function changeText() {
